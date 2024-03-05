@@ -1,0 +1,26 @@
+NLP Assignment
+
+Download and read carefully the assignment description document: nlp_assignment_doc_2024.pdf 
+
+Download the deliverable template (contains train and dev data files, code template and a script to run the program): nlp_assignment.zip 
+
+
+Evaluation
+
+Grading scale:
+Accuracy on test set: 10pts
+Accuracy on dev set: 3pts
+Exec speed (training and inference): 4 pts
+README file: 3 pts
+
+The first 3 metrics are computed automatically with a python script.
+
+Penalties will be applied for:
+Deliverable delays (-1 point per day)
+Group of more than 4: -5 pts per extra member, e.g. group of 6 => penalty = -5 x 2 = -10
+Exec error due to the use of a non-allowed python library: -5 pts
+Exec error due the use of a non compatible version of a library: -5 pts
+Exec error due to non compatible deliverable format (zip) or folder structure: -2 pts
+Other exec errors: penalty will depend on how much effort is required to correct the errors and make the program run successfully.
+
+Submission deadline: April 5, 2024.

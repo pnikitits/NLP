@@ -1,0 +1,29 @@
+Each line contains 5 tab-separated fields: the polarity of the opinion (the ground truth polarity label), the aspect category on which the opinion is expressed, a specific target term, the character offsets of the term (start:end), and the sentence in which the term occurs and the opinion is expressed.
+
+example:
+positive	AMBIENCE#GENERAL	seating	18:25	short and sweet – seating is great:it's romantic,cozy and private.
+positive	AMBIENCE#GENERAL	trattoria	25:34	This quaint and romantic trattoria is at the top of my Manhattan restaurant list.
+positive	FOOD#QUALITY	food	98:102	The have over 100 different beers to offer thier guest so that made my husband very happy and the food was delicious, if I must recommend a dish it must be the pumkin tortelini.
+negative	SERVICE#GENERAL	STAFF	5:10	THIS STAFF SHOULD BE FIRED.
+
+i have done:
+X_train = df_train.iloc[:, 1:]
+y_train = df_train.iloc[:, 0]
+print(y_train.shape , X_train.shape)
+(1502,) (1502, 4)
+
+make a classifier that produces a polarity label: positive, negative or neutral. use pytorch and the gpu.
+
+There are 12 different aspects categories:
+AMBIENCE#GENERAL
+DRINKS#PRICES
+DRINKS#QUALITY
+DRINKS#STYLE_OPTIONS
+FOOD#PRICES
+FOOD#QUALITY
+FOOD#STYLE_OPTIONS
+LOCATION#GENERAL
+RESTAURANT#GENERAL
+RESTAURANT#MISCELLANEOUS
+RESTAURANT#PRICES
+SERVICE#GENERAL
