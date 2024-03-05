@@ -27,3 +27,38 @@ RESTAURANT#GENERAL
 RESTAURANT#MISCELLANEOUS
 RESTAURANT#PRICES
 SERVICE#GENERAL
+
+
+
+---------
+
+The majority class of the validation set is about 70% (positive labels)
+
+
+with the new model:
+Epoch 1/10
+----------
+Train loss 0.7750953535371005 accuracy 0.674434087882823
+Val   loss 0.8038126087569176 accuracy 0.7013333333333334
+
+Epoch 2/10
+----------
+Train loss 0.7431096271314519 accuracy 0.6870838881491346
+Val   loss 0.7957198970970956 accuracy 0.7013333333333334
+
+Epoch 3/10
+----------
+Train loss 0.7233907270463223 accuracy 0.6950732356857524
+Val   loss 0.7422471426902933 accuracy 0.7013333333333334
+
+Epoch 4/10
+----------
+Train loss 0.7158841786390924 accuracy 0.6957390146471372
+Val   loss 0.7737604164855277 accuracy 0.648
+
+Epoch 5/10
+----------
+Train loss 0.721910511163321 accuracy 0.6930758988015979
+Val   loss 0.7362385847150011 accuracy 0.7013333333333334
+...
+Val   loss 0.7530985469830797 accuracy 0.696
