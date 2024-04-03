@@ -14,6 +14,7 @@ from transformers import BertTokenizer
 from torch.utils.data import DataLoader
 from torch.optim import Adam
 from torch import nn
+import warnings
 
 
 class Classifier:
@@ -34,6 +35,11 @@ class Classifier:
         self.model = None
         self.polarity_encoder = LabelEncoder()
         self.tokenizer = None
+        self.batch_size = 8
+
+        # silence the futurewarning
+        warnings.simplefilter(action='ignore', category=FutureWarning)
+        
     
     
     
@@ -49,9 +55,9 @@ class Classifier:
 
         # Load and preprocess the data
         df_train = data_preprocessing(train_filename)
-        df_dev = data_preprocessing(dev_filename)
+        #df_dev = data_preprocessing(dev_filename)
         df_train['Polarity'] = self.polarity_encoder.fit_transform(df_train['Polarity'])
-        df_dev['Polarity'] = self.polarity_encoder.transform(df_dev['Polarity'])
+        #df_dev['Polarity'] = self.polarity_encoder.transform(df_dev['Polarity'])
 
         # Setup the tokenizer
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
@@ -60,11 +66,10 @@ class Classifier:
 
         # Create the dataset and dataloader
         train_dataset = SentimentDataset(df_train['ModifiedSentence'], df_train['Polarity'], self.tokenizer)
-        dev_dataset = SentimentDataset(df_dev['ModifiedSentence'], df_dev['Polarity'], self.tokenizer)
+        #dev_dataset = SentimentDataset(df_dev['ModifiedSentence'], df_dev['Polarity'], self.tokenizer)
 
-        batch_size = 32
-        train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
-        dev_loader = DataLoader(dev_dataset, batch_size=batch_size, shuffle=True)
+        train_loader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=True)
+        #dev_loader = DataLoader(dev_dataset, batch_size=self.batch_size, shuffle=True)
 
         # Initialize the model and optimizer
         n_classes = len(self.polarity_encoder.classes_)
@@ -100,7 +105,7 @@ class Classifier:
         test_df['Polarity'] = self.polarity_encoder.transform(test_df['Polarity'])
 
         test_dataset = SentimentDataset(test_df['ModifiedSentence'], test_df['Polarity'], self.tokenizer)
-        test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+        test_loader = DataLoader(test_dataset, batch_size=self.batch_size, shuffle=False)
 
         predictions, _ = make_predictions(self.model, test_loader, device)
         predictions = self.polarity_encoder.inverse_transform(predictions)
