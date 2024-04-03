@@ -77,7 +77,7 @@ class Classifier:
         optimizer = Adam(self.model.parameters(), lr=2e-5)
 
         # Define the loss function
-        class_proportions = {0: 0.26, 1: 0.04, 2: 0.7}
+        class_proportions = {0: 0.259481, 1: 0.038589, 2: 0.701929}
         class_weights = {class_label: (1.0 / proportion) for class_label, proportion in class_proportions.items()}
         weight_sum = sum(class_weights.values())
         num_classes = len(class_weights)

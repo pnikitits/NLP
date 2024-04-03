@@ -7,7 +7,7 @@
         which enhances the sentence by highlighting the target term. This is done by inserting special
         tokens [unused0] and [unused1] before and after the term.
         - Cropping the sentence a defined number of characters on each side of the target term, this removes
-        extra information which might not be relevant to the target
+        extra information which might not be relevant to the target.
         - Encoding of the target column: 0,1,2 for negative,neutral,positive respectively.
         - I pass only the encoded target and the precessed sentence to the classifier.
 
@@ -25,5 +25,11 @@
 
 
 3. Accuracy on the dev dataset:
-    Mean Dev Acc.: 83.03 (0.62)
-    Dev accs: [83.51, 83.78, 82.45, 82.18, 83.24]
+    Completed 5 runs.
+    Dev accs: [80.59, 82.18, 81.91, 84.84, 84.04]
+    Test accs: [-1, -1, -1, -1, -1]
+
+    Mean Dev Acc.: 82.71 (1.53)
+    Mean Test Acc.: -1.00 (0.00)
+
+    Exec time: 161.66 s. ( 32 per run )
